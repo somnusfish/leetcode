@@ -1,4 +1,4 @@
 # leetcode
 leetcode solution in C
 
-Finished 56/190
+Finished 59/190
