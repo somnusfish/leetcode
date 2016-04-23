@@ -2,24 +2,25 @@
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        vector<int> return_val;
-        multimap<int, int> nums_map;
-        multimap<int, int>::iterator it;
+        vector<int> ret;
+        multimap<int, int> numsMap;
+        multimap<int, int>::const_iterator c_it;
         for(int i=0; i<nums.size(); i++){
-            nums_map.insert(make_pair(nums[i], i+1));
+            numsMap.insert(make_pair(nums[i], i));
         }
         
         for(int i=0; i<nums.size(); i++){
-            it = nums_map.find(nums[i]);
-            nums_map.erase(it);
+            c_it = numsMap.find(nums[i]);
+            numsMap.erase(c_it);
             int temp = target - nums[i];
-            it = nums_map.find(temp);
-            if(it!=nums_map.end()){
-                return_val.push_back(i+1);
-                return_val.push_back((*it).second);
-                return return_val;
+            c_it = numsMap.find(temp);
+            if(c_it!=numsMap.cend()){
+                ret.push_back(i);
+                ret.push_back((*c_it).second);
+                
             }
         }
         
+        return ret;
     }
 };
